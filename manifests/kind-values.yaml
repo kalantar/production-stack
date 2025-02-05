@@ -1,0 +1,26 @@
+routerSpec:
+  resources:
+    requests:
+      cpu: "2"
+      memory: "10Gi"
+    limits:
+      cpu: "2"
+      memory: "10Gi"
+
+servingEngineSpec:
+  modelSpec:
+  - name: "opt125m"
+    repository: "us.icr.io/research3/kalantar/vllm-cpu-env"
+    tag: "202502031515"
+    imagePullSecret: "all-icr-io"
+    modelURL: "facebook/opt-125m"
+
+    replicaCount: 1
+
+    requestCPU: 4
+    requestMemory: "10Gi"
+    requestGPU: 0
+
+    pvcStorage: "10Gi"
+
+  runtimeClassName: ""
